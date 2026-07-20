@@ -1,0 +1,72 @@
+{
+  "name": "vidget",
+  "version": "0.0.1",
+  "description": "Vidget — Embeddable widget boilerplate based on Vue 3",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "playground": "vite --open",
+    "build:widget": "vite build",
+    "build": "vue-tsc --noEmit && pnpm build:widget",
+    "predev": "pnpm build:widget",
+    "preplayground": "pnpm build:widget",
+    "typecheck": "vue-tsc --noEmit",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "spellcheck": "cspell --no-progress --no-summary '**/*.{ts,js,vue,mjs,cjs,md}'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm spellcheck",
+    "audit:check": "pnpm audit --audit-level moderate",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "changeset:status": "changeset status --verbose",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vue": "^3.5.17"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/node": "^22.15.32",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "cspell": "^9.1.2",
+    "eslint": "^9.29.0",
+    "eslint-plugin-vue": "^10.2.0",
+    "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^2.2.10"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,json,md,css}": [
+      "prettier --write"
+    ],
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "packageManager": "pnpm@9.15.0"
+}
