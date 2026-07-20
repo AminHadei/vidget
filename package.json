@@ -10,6 +10,8 @@
     "dev": "vite",
     "playground": "vite --open",
     "build:widget": "vite build",
+    "build:playground": "pnpm build:widget && vite build --mode playground",
+    "preview:playground": "vite preview --mode playground",
     "build": "vue-tsc --noEmit && pnpm build:widget",
     "predev": "pnpm build:widget",
     "preplayground": "pnpm build:widget",

@@ -1,4 +1,4 @@
-import { createReadStream, existsSync } from "node:fs";
+import { copyFileSync, createReadStream, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { defineConfig, type Plugin } from "vite";
@@ -6,7 +6,11 @@ import vue from "@vitejs/plugin-vue";
 import pkg from "./package.json";
 
 const rootDir = resolve(import.meta.dirname);
+const playgroundDir = resolve(rootDir, "playground");
 const distDir = resolve(rootDir, "dist");
+const playgroundOutDir = resolve(rootDir, "dist-playground");
+
+const vidgetAssets = ["vidget.js", "vidget.css"] as const;
 
 function serveVidgetDist(): Plugin {
   const assets = {
@@ -55,18 +59,48 @@ function serveVidgetDist(): Plugin {
   };
 }
 
-export default defineConfig(({ command }) => {
+function copyVidgetAssets(outDir: string): Plugin {
+  return {
+    name: "copy-vidget-assets",
+    closeBundle() {
+      for (const file of vidgetAssets) {
+        const source = resolve(distDir, file);
+        if (!existsSync(source)) {
+          throw new Error(`${file} not found. Run "pnpm build:widget" first.`);
+        }
+        copyFileSync(source, resolve(outDir, file));
+      }
+    },
+  };
+}
+
+export default defineConfig(({ command, mode }) => {
+  const sharedResolve = {
+    alias: {
+      "@": resolve(rootDir, "src"),
+    },
+  };
+
   if (command === "serve") {
     return {
       plugins: [vue(), serveVidgetDist()],
-      root: resolve(rootDir, "playground"),
-      resolve: {
-        alias: {
-          "@": resolve(rootDir, "src"),
-        },
-      },
+      root: playgroundDir,
+      resolve: sharedResolve,
       server: {
         open: true,
+      },
+    };
+  }
+
+  if (mode === "playground") {
+    return {
+      base: process.env.VITE_BASE ?? "/",
+      plugins: [vue(), copyVidgetAssets(playgroundOutDir)],
+      root: playgroundDir,
+      resolve: sharedResolve,
+      build: {
+        outDir: playgroundOutDir,
+        emptyOutDir: true,
       },
     };
   }
