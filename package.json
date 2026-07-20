@@ -1,6 +1,6 @@
 {
   "name": "vidget",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Vidget — Embeddable widget boilerplate based on Vue 3",
   "type": "module",
   "files": [
