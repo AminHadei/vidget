@@ -131,28 +131,19 @@ onBeforeUnmount(() => {
 <template>
   <div class="pg-layout">
     <aside class="pg-sidebar">
-      <h1 class="pg-brand">
-        Vidget
-      </h1>
+      <h1 class="pg-brand">Vidget</h1>
       <p class="pg-tagline">
         Vue 3 embeddable widget boilerplate · bundle v{{ bundleVersion }}
       </p>
       <nav class="pg-nav">
-        <a
-          v-for="section in sections"
-          :key="section.id"
-          :href="`#${section.id}`"
-        >
+        <a v-for="section in sections" :key="section.id" :href="`#${section.id}`">
           {{ section.label }}
         </a>
       </nav>
     </aside>
 
     <main class="pg-main">
-      <section
-        id="overview"
-        class="pg-section"
-      >
+      <section id="overview" class="pg-section">
         <h2>Overview</h2>
         <p>
           The playground loads the production bundle from
@@ -172,10 +163,7 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <section
-        id="customization"
-        class="pg-section"
-      >
+      <section id="customization" class="pg-section">
         <h2>Customization</h2>
         <p>
           Vidget provides the embed shell, mount modes, and display layouts. Replace the
@@ -214,10 +202,7 @@ onBeforeUnmount(() => {
         </p>
       </section>
 
-      <section
-        id="modes"
-        class="pg-section"
-      >
+      <section id="modes" class="pg-section">
         <h2>Mount modes</h2>
         <table class="pg-table">
           <thead>
@@ -245,10 +230,7 @@ onBeforeUnmount(() => {
         </table>
       </section>
 
-      <section
-        id="display"
-        class="pg-section"
-      >
+      <section id="display" class="pg-section">
         <h2>Display layouts</h2>
         <p>
           Applies to <code>floating</code> and <code>trigger</code> only. Ignored by
@@ -278,10 +260,7 @@ onBeforeUnmount(() => {
         </table>
       </section>
 
-      <section
-        id="api"
-        class="pg-section"
-      >
+      <section id="api" class="pg-section">
         <h2>Public API</h2>
         <pre class="pg-pre">
           window.Vidget.init(partialConfig?) =&gt; WidgetHandle
@@ -293,10 +272,7 @@ onBeforeUnmount(() => {
         </pre>
       </section>
 
-      <section
-        id="config"
-        class="pg-section"
-      >
+      <section id="config" class="pg-section">
         <h2>Configuration</h2>
         <p>
           Merge order: defaults → script <code>data-*</code> →
@@ -370,138 +346,69 @@ onBeforeUnmount(() => {
         </table>
       </section>
 
-      <section
-        id="playground"
-        class="pg-section"
-      >
+      <section id="playground" class="pg-section">
         <h2>Live playground</h2>
         <div class="pg-card">
           <div class="pg-grid">
             <div class="pg-field">
               <label for="mode">Mount mode</label>
-              <select
-                id="mode"
-                v-model="mode"
-              >
-                <option value="floating">
-                  floating
-                </option>
-                <option value="trigger">
-                  trigger
-                </option>
-                <option value="inline">
-                  inline (overlay hidden)
-                </option>
+              <select id="mode" v-model="mode">
+                <option value="floating">floating</option>
+                <option value="trigger">trigger</option>
+                <option value="inline">inline (overlay hidden)</option>
               </select>
             </div>
             <div class="pg-field">
               <label for="display">Display layout</label>
-              <select
-                id="display"
-                v-model="display"
-                :disabled="mode === 'inline'"
-              >
-                <option value="bubble">
-                  bubble
-                </option>
-                <option value="sidebar">
-                  sidebar
-                </option>
-                <option value="dialog">
-                  dialog
-                </option>
+              <select id="display" v-model="display" :disabled="mode === 'inline'">
+                <option value="bubble">bubble</option>
+                <option value="sidebar">sidebar</option>
+                <option value="dialog">dialog</option>
               </select>
             </div>
             <div class="pg-field">
               <label for="position">Position</label>
-              <select
-                id="position"
-                v-model="position"
-              >
-                <option value="right">
-                  right
-                </option>
-                <option value="left">
-                  left
-                </option>
+              <select id="position" v-model="position">
+                <option value="right">right</option>
+                <option value="left">left</option>
               </select>
             </div>
             <div class="pg-field">
               <label for="title">Title</label>
-              <input
-                id="title"
-                v-model="title"
-                type="text"
-              >
+              <input id="title" v-model="title" type="text" />
             </div>
             <div class="pg-field">
               <label for="subtitle">Subtitle</label>
-              <input
-                id="subtitle"
-                v-model="subtitle"
-                type="text"
-              >
+              <input id="subtitle" v-model="subtitle" type="text" />
             </div>
             <div class="pg-field">
               <label for="apiBase">apiBase</label>
-              <input
-                id="apiBase"
-                v-model="apiBase"
-                type="text"
-              >
+              <input id="apiBase" v-model="apiBase" type="text" />
             </div>
           </div>
 
           <div class="pg-actions">
-            <button
-              type="button"
-              class="pg-btn"
-              @click="remountAll"
-            >
-              Apply
-            </button>
-            <button
-              id="pg-trigger-btn"
-              type="button"
-              class="pg-btn pg-btn--ghost"
-            >
+            <button type="button" class="pg-btn" @click="remountAll">Apply</button>
+            <button id="pg-trigger-btn" type="button" class="pg-btn pg-btn--ghost">
               Trigger button
             </button>
-            <button
-              type="button"
-              class="pg-btn pg-btn--ghost"
-              @click="openOverlay"
-            >
+            <button type="button" class="pg-btn pg-btn--ghost" @click="openOverlay">
               Open
             </button>
-            <button
-              type="button"
-              class="pg-btn pg-btn--ghost"
-              @click="closeOverlay"
-            >
+            <button type="button" class="pg-btn pg-btn--ghost" @click="closeOverlay">
               Close
             </button>
-            <button
-              type="button"
-              class="pg-btn pg-btn--ghost"
-              @click="toggleOverlay"
-            >
+            <button type="button" class="pg-btn pg-btn--ghost" @click="toggleOverlay">
               Toggle
             </button>
           </div>
         </div>
 
         <h3>Inline container demo</h3>
-        <div
-          id="inline-slot"
-          class="pg-inline-demo"
-        />
+        <div id="inline-slot" class="pg-inline-demo" />
       </section>
 
-      <section
-        id="tooling"
-        class="pg-section"
-      >
+      <section id="tooling" class="pg-section">
         <h2>Tooling</h2>
         <ul>
           <li><strong>Husky</strong> — pre-commit and commit-msg hooks</li>

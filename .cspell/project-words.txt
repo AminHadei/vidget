@@ -5,6 +5,7 @@ husky
 lint-staged
 commitlint
 changesets
+frontmatter
 typecheck
 spellcheck
 webc

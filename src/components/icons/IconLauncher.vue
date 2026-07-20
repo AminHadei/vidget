@@ -16,13 +16,7 @@ defineProps<{
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <rect
-      x="4"
-      y="4"
-      width="16"
-      height="16"
-      rx="2"
-    />
+    <rect x="4" y="4" width="16" height="16" rx="2" />
     <path d="M4 9h16" />
   </svg>
 </template>

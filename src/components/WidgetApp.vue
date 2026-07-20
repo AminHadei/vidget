@@ -9,10 +9,7 @@ const { config, open, shellClass, backdropClass, launcherClass, close, openWidge
 </script>
 
 <template>
-  <div
-    v-if="config.mode === 'inline'"
-    class="vd-inline"
-  >
+  <div v-if="config.mode === 'inline'" class="vd-inline">
     <WidgetPanel :show-close="false" />
   </div>
 
@@ -27,11 +24,7 @@ const { config, open, shellClass, backdropClass, launcherClass, close, openWidge
       <IconLauncher icon-class="vd-launcher-icon" />
     </button>
 
-    <div
-      :class="backdropClass"
-      aria-hidden="true"
-      @click="close"
-    />
+    <div :class="backdropClass" aria-hidden="true" @click="close" />
 
     <aside
       :class="shellClass"
@@ -39,10 +32,7 @@ const { config, open, shellClass, backdropClass, launcherClass, close, openWidge
       :aria-modal="config.display !== 'bubble'"
       :aria-hidden="!open"
     >
-      <WidgetPanel
-        show-close
-        @close="close"
-      />
+      <WidgetPanel show-close @close="close" />
     </aside>
 
     <button

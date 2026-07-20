@@ -35,16 +35,15 @@ const config = useWidgetConfig();
     </header>
 
     <div class="vd-content">
-      <p class="vd-content-lead">
-        Your widget content goes here.
-      </p>
+      <p class="vd-content-lead">Your widget content goes here.</p>
       <p>
         Edit <code class="vd-code">src/components/WidgetPanel.vue</code> to implement
         your UI. The shell, mount logic, and public API stay unchanged.
       </p>
       <p>
         Use <code class="vd-code">config.apiBase</code> (currently
-        <code class="vd-code">{{ config.apiBase }}</code>) for backend requests. Configure it via
+        <code class="vd-code">{{ config.apiBase }}</code
+        >) for backend requests. Configure it via
         <code class="vd-code">Vidget.init()</code>,
         <code class="vd-code">window.VidgetConfig</code>, or
         <code class="vd-code">data-api-base</code> on the script tag.
