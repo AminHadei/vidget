@@ -39,6 +39,7 @@ const title = ref("Widget");
 const subtitle = ref("Replace this panel with your own content");
 const apiBase = ref("/api");
 const bundleVersion = ref("—");
+const baseUrl = import.meta.env.BASE_URL;
 
 const overlayHandle = ref<WidgetHandle | null>(null);
 const inlineHandle = ref<WidgetHandle | null>(null);
@@ -131,13 +132,25 @@ onBeforeUnmount(() => {
 <template>
   <div class="pg-layout">
     <aside class="pg-sidebar">
-      <h1 class="pg-brand">Vidget</h1>
+      <div class="pg-brand">
+        <img
+          :src="`${baseUrl}logo.svg`"
+          alt=""
+          class="pg-brand-mark"
+          width="36"
+          height="36"
+        />
+        <span class="pg-brand-name">Vidget</span>
+      </div>
       <p class="pg-tagline">
         Vue 3 embeddable widget boilerplate · bundle v{{ bundleVersion }}
       </p>
       <nav class="pg-nav">
         <a v-for="section in sections" :key="section.id" :href="`#${section.id}`">
           {{ section.label }}
+        </a>
+        <a :href="`${baseUrl}logo-options/index.html`" class="pg-nav-extra">
+          Logo options (A–F)
         </a>
       </nav>
     </aside>

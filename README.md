@@ -1,8 +1,30 @@
+<p align="center">
+  <img src="./playground/public/logo.svg" alt="Vidget logo" width="64" height="64" />
+</p>
+
 # Vidget
 
 Vue 3 embeddable widget boilerplate with monochrome styling, Shadow DOM isolation, and production-ready tooling.
 
 Vidget is inspired by embeddable widget architectures. It ships as a self-contained IIFE bundle that can be dropped onto any website without conflicting with host styles.
+
+## Playground
+
+Interactive documentation with a live widget preview — mount modes, display layouts, configuration, and the public API.
+
+| Where      | How                                                                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| **Local**  | `pnpm dev` — Vite prints the URL (usually `http://localhost:5173`)                                        |
+| **Online** | [aminhadei.github.io/vidget](https://aminhadei.github.io/vidget/) — deployed from `main` via GitHub Pages |
+
+The playground loads `dist/vidget.js` and `dist/vidget.css`, the same files you ship to host pages. `pnpm dev` rebuilds the widget bundle first.
+
+To preview the Pages build locally:
+
+```bash
+VITE_BASE=/vidget/ pnpm build:playground
+VITE_BASE=/vidget/ pnpm preview:playground
+```
 
 ## Features
 
@@ -22,8 +44,6 @@ Vidget is inspired by embeddable widget architectures. It ships as a self-contai
 pnpm install
 pnpm dev
 ```
-
-Open the playground to explore mount modes, display layouts, and the public API. The playground loads `dist/vidget.js` and `dist/vidget.css` directly (same as a host page). `pnpm dev` rebuilds the widget bundle first.
 
 ## Build
 
@@ -172,7 +192,8 @@ Merge order (low → high):
 
 ```
 vidget/
-├── playground/              # Interactive docs and live demo
+├── playground/              # Interactive docs, live demo, and brand assets
+│   └── public/              # favicon, logo (copied to build output)
 ├── src/
 │   ├── components/          # WidgetApp, WidgetPanel, icons
 │   ├── composables/         # Shell helpers (useWidgetConfig, etc.)
@@ -189,22 +210,24 @@ vidget/
 
 ## Scripts
 
-| Script              | Description                                  |
-| ------------------- | -------------------------------------------- |
-| `pnpm dev`          | Start playground dev server                  |
-| `pnpm dev`          | Rebuild widget bundle, then start playground |
-| `pnpm build:widget` | Build IIFE bundle only                       |
-| `pnpm build`        | Typecheck and build IIFE bundle              |
-| `pnpm check`        | Run all quality checks                       |
-| `pnpm test`         | Run Vitest                                   |
-| `pnpm changeset`    | Create a changeset for release               |
+| Script                  | Description                                       |
+| ----------------------- | ------------------------------------------------- |
+| `pnpm dev`              | Rebuild widget bundle, then start playground      |
+| `pnpm playground`       | Same as `pnpm dev` with browser open              |
+| `pnpm build:widget`     | Build IIFE bundle only                            |
+| `pnpm build:playground` | Build widget + static playground for GitHub Pages |
+| `pnpm build`            | Typecheck and build IIFE bundle                   |
+| `pnpm check`            | Run all quality checks                            |
+| `pnpm check:fix`        | Auto-fix lint/format, then verify                 |
+| `pnpm test`             | Run Vitest                                        |
+| `pnpm changeset`        | Create a changeset for release                    |
 
 ## Tooling
 
 - **Husky** — pre-commit (lint-staged) and commit-msg (Commitlint)
 - **cspell** — spell checking with project dictionary
 - **Changesets** — version bumps and changelog
-- **GitHub Actions** — CI on pull requests
+- **GitHub Actions** — CI on pull requests; playground deploy to GitHub Pages on `main`
 
 See [AGENTS.md](./AGENTS.md) for agent-specific rules and skills.
 
