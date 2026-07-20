@@ -1,7 +1,5 @@
 vidget
 embeddable
-noirium
-vetro
 composables
 husky
 lint-staged
