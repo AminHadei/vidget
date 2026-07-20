@@ -1,0 +1,17 @@
+vidget
+embeddable
+noirium
+vetro
+composables
+husky
+lint-staged
+commitlint
+changesets
+typecheck
+spellcheck
+webc
+unocss
+jsdom
+vitest
+vueuse
+IIFE
