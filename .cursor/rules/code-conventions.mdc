@@ -1,0 +1,7 @@
+---
+description: Code conventions — loads code-conventions skill
+globs: src/**/*
+alwaysApply: false
+---
+
+@.agents/skills/code-conventions/SKILL.md

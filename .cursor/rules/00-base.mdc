@@ -1,0 +1,8 @@
+---
+description: Base rules — defer to AGENTS.md
+alwaysApply: true
+---
+
+This project's agent documentation is the root `AGENTS.md` file. Read it before making any change.
+
+Do not duplicate `AGENTS.md` content in Cursor rules. If a rule needs to change, change `AGENTS.md`.

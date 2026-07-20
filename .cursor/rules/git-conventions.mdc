@@ -1,0 +1,7 @@
+---
+description: Git and commit conventions — loads git-conventions skill
+globs:
+alwaysApply: false
+---
+
+@.agents/skills/git-conventions/SKILL.md

@@ -1,0 +1,7 @@
+---
+description: Documentation authoring — loads doc-authoring skill
+globs: README.md,docs/**/*
+alwaysApply: false
+---
+
+@.agents/skills/doc-authoring/SKILL.md

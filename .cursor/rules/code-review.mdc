@@ -1,0 +1,7 @@
+---
+description: Code review — loads code-review skill
+globs:
+alwaysApply: false
+---
+
+@.agents/skills/code-review/SKILL.md
