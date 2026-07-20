@@ -1,0 +1,253 @@
+:root {
+  color-scheme: light;
+  --pg-bg: #fafafa;
+  --pg-surface: #ffffff;
+  --pg-border: #e5e5e5;
+  --pg-text: #0a0a0a;
+  --pg-muted: #737373;
+  --pg-code-bg: #f5f5f5;
+  --pg-accent: #171717;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--pg-bg);
+  color: var(--pg-text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--pg-accent);
+}
+
+code,
+pre {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+pre {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--pg-border);
+  border-radius: 10px;
+  background: var(--pg-code-bg);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Indented template markup: collapse leading spaces */
+pre.pg-pre {
+  white-space: pre-line;
+}
+
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+
+.pg-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.pg-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 24px 20px;
+  border-right: 1px solid var(--pg-border);
+  background: var(--pg-surface);
+}
+
+.pg-brand {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pg-tagline {
+  margin: 0 0 20px;
+  color: var(--pg-muted);
+  font-size: 13px;
+}
+
+.pg-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pg-nav a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--pg-text);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.pg-nav a:hover {
+  background: var(--pg-code-bg);
+}
+
+.pg-main {
+  padding: 32px 40px 64px;
+  max-width: 960px;
+}
+
+.pg-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 24px;
+}
+
+.pg-section h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.pg-section h3 {
+  margin: 24px 0 8px;
+  font-size: 16px;
+}
+
+.pg-section p,
+.pg-section li {
+  color: #262626;
+}
+
+.pg-section ul {
+  padding-left: 20px;
+}
+
+.pg-card {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--pg-border);
+  border-radius: 12px;
+  background: var(--pg-surface);
+}
+
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.pg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pg-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pg-field select,
+.pg-field input,
+.pg-field textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--pg-border);
+  border-radius: 8px;
+  background: var(--pg-surface);
+}
+
+.pg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pg-btn {
+  padding: 10px 14px;
+  border: 1px solid var(--pg-accent);
+  border-radius: 8px;
+  background: var(--pg-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.pg-btn--ghost {
+  background: var(--pg-surface);
+  color: var(--pg-accent);
+}
+
+.pg-btn:hover {
+  opacity: 0.92;
+}
+
+.pg-inline-demo {
+  margin-top: 16px;
+  min-height: 460px;
+}
+
+.pg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.pg-table th,
+.pg-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--pg-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.pg-table th {
+  background: var(--pg-code-bg);
+  font-weight: 600;
+}
+
+.pg-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--pg-border);
+  border-radius: 999px;
+  font-size: 12px;
+  background: var(--pg-code-bg);
+}
+
+@media (max-width: 900px) {
+  .pg-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--pg-border);
+  }
+
+  .pg-main {
+    padding: 24px 20px 48px;
+  }
+}
